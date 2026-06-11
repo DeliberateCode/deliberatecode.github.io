@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>System2 — Deliberate Code</title>
+    <meta
+      name="description"
+      content="Multi-agent engineering workflows with spec-driven quality gates for Claude Code."
+    />
+    <meta property="og:title" content="System2 — Deliberate Code" />
+    <meta
+      property="og:description"
+      content="Multi-agent engineering workflows with spec-driven quality gates for Claude Code."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://deliberatecode.github.io/system2/"
+    />
+    <meta property="og:image" content="https://deliberatecode.github.io/assets/apple-touch-icon.png" />
+    <link rel="icon" href="../assets/favicon-96.png" type="image/png" />
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/site.css" />
+    <script src="../js/site.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="/">
+          <img
+            class="brand-mark"
+            src="../assets/favicon-96.png"
+            width="36"
+            height="36"
+            alt=""
+          />
+          <span class="brand-text">Deliberate Code</span>
+        </a>
+        <nav class="site-nav" data-site-nav aria-label="Site"></nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-hero wrap">
+        <p class="hero-eyebrow">Claude Code plugin</p>
+        <h1>System2</h1>
+        <p class="hero-lede">
+          A framework for deliberate, spec-driven, verification-first software
+          engineering. Instead of ad-hoc prompting, an orchestrator coordinates
+          specialized subagents through explicit quality gates—from scope to
+          ship.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#install">Install</a>
+          <a
+            class="btn btn-secondary external"
+            href="https://github.com/DeliberateCode/System2"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Repository</a
+          >
+        </div>
+      </section>
+
+      <section class="section pipeline-section wrap">
+        <p class="section-label">Workflow</p>
+        <h2 class="section-title">Eight stages, six approval gates</h2>
+        <p class="section-intro">
+          Progress is deliberate: each planning artifact is reviewed before the
+          next stage unlocks. Implementation and verification run only after
+          tasks are approved.
+        </p>
+        <ol class="pipeline-track">
+          <li class="pipeline-step">
+            <span class="gate">Gate 0</span>
+            <strong>Scope</strong>
+            <span>Goal, constraints, definition of done</span>
+          </li>
+          <li class="pipeline-step">
+            <span class="gate">Gate 1</span>
+            <strong>Context</strong>
+            <span>Approve <code>spec/context.md</code></span>
+          </li>
+          <li class="pipeline-step">
+            <span class="gate">Gate 2</span>
+            <strong>Requirements</strong>
+            <span>EARS-format <code>spec/requirements.md</code></span>
+          </li>
+          <li class="pipeline-step">
+            <span class="gate">Gate 3</span>
+            <strong>Design</strong>
+            <span>Architecture in <code>spec/design.md</code></span>
+          </li>
+          <li class="pipeline-step">
+            <span class="gate">Gate 4</span>
+            <strong>Tasks</strong>
+            <span>Atomic work in <code>spec/tasks.md</code></span>
+          </li>
+          <li class="pipeline-step">
+            <span class="gate">Execute</span>
+            <strong>Implementation</strong>
+            <span>Small diffs via executor agent</span>
+          </li>
+          <li class="pipeline-step">
+            <span class="gate">Verify</span>
+            <strong>Verification</strong>
+            <span>Tests, security, evals</span>
+          </li>
+          <li class="pipeline-step">
+            <span class="gate">Gate 5</span>
+            <strong>Ship</strong>
+            <span>Final diff and risk checklist</span>
+          </li>
+        </ol>
+      </section>
+
+      <section class="section wrap">
+        <p class="section-label">Capabilities</p>
+        <h2 class="section-title">What you get</h2>
+        <div class="features-grid">
+          <article class="feature-card">
+            <h3>13 specialized agents</h3>
+            <p>
+              Purpose-built subagents for context, requirements, design, tasks,
+              implementation, testing, security, evals, docs, review, postmortems,
+              and MCP tooling.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3>Safety hooks</h3>
+            <p>
+              Validation scripts guard dangerous commands, sensitive files, path
+              boundaries, and change budgets before work lands in your repo.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3>Per-agent allowlists</h3>
+            <p>
+              Regex-based file restrictions keep each agent in its lane—planners
+              don’t rewrite production code; executors don’t skip verification.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3>Overlay-ready</h3>
+            <p>
+              Extend System2 with overlays that inject guidance into the agent
+              pipeline without forking the core plugin. Browse the
+              <a href="/overlays/">overlay library</a>.
+            </p>
+          </article>
+        </div>
+
+        <div class="spec-panel" aria-label="Spec directory layout">
+          <pre><span class="comment"># Contract between planning and execution</span>
+spec/
+├── context.md       <span class="comment"># Problem, goals, constraints</span>
+├── requirements.md  <span class="comment"># EARS-format testable requirements</span>
+├── design.md        <span class="comment"># Architecture, interfaces, failure modes</span>
+├── tasks.md         <span class="comment"># Atomic tasks with dependencies</span>
+└── security.md      <span class="comment"># Threat model (when applicable)</span></pre>
+        </div>
+
+        <details class="agents-details">
+          <summary>All 13 subagents</summary>
+          <div class="agents-table-wrap">
+            <table class="agents-table">
+              <thead>
+                <tr>
+                  <th scope="col">Agent</th>
+                  <th scope="col">Role</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>repo-governor</code></td>
+                  <td>Repo survey and governance bootstrap</td>
+                </tr>
+                <tr>
+                  <td><code>spec-coordinator</code></td>
+                  <td>Drafts <code>spec/context.md</code></td>
+                </tr>
+                <tr>
+                  <td><code>requirements-engineer</code></td>
+                  <td>Writes <code>spec/requirements.md</code></td>
+                </tr>
+                <tr>
+                  <td><code>design-architect</code></td>
+                  <td>Produces <code>spec/design.md</code></td>
+                </tr>
+                <tr>
+                  <td><code>task-planner</code></td>
+                  <td>Creates <code>spec/tasks.md</code></td>
+                </tr>
+                <tr>
+                  <td><code>executor</code></td>
+                  <td>Implements tasks with small diffs</td>
+                </tr>
+                <tr>
+                  <td><code>test-engineer</code></td>
+                  <td>Runs verification and updates tests</td>
+                </tr>
+                <tr>
+                  <td><code>security-sentinel</code></td>
+                  <td>Security review and threat modeling</td>
+                </tr>
+                <tr>
+                  <td><code>eval-engineer</code></td>
+                  <td>Agent and LLM behavior evals</td>
+                </tr>
+                <tr>
+                  <td><code>docs-release</code></td>
+                  <td>Docs, changelog, and release notes</td>
+                </tr>
+                <tr>
+                  <td><code>code-reviewer</code></td>
+                  <td>Final review for correctness</td>
+                </tr>
+                <tr>
+                  <td><code>postmortem-scribe</code></td>
+                  <td>Incident postmortems</td>
+                </tr>
+                <tr>
+                  <td><code>mcp-toolsmith</code></td>
+                  <td>MCP tool surface design</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </section>
+
+      <section class="section wrap" id="install">
+        <p class="section-label">Install</p>
+        <h2 class="section-title">Add System2 to Claude Code</h2>
+        <p class="section-intro">
+          Install via the Claude Code plugin marketplace, restart to load agents
+          and hooks, then initialize orchestrator instructions in your project.
+        </p>
+
+        <div class="install-block">
+          <div class="install-step">
+            <header>
+              <h3>Step 1 — Add marketplace</h3>
+              <button
+                type="button"
+                class="copy-btn"
+                data-copy="install-marketplace"
+              >
+                Copy
+              </button>
+            </header>
+            <pre id="install-marketplace"><code>/plugin marketplace add DeliberateCode/System2</code></pre>
+          </div>
+          <div class="install-step">
+            <header>
+              <h3>Step 2 — Install plugin</h3>
+              <button type="button" class="copy-btn" data-copy="install-plugin">
+                Copy
+              </button>
+            </header>
+            <pre id="install-plugin"><code>/plugin install system2@system2-marketplace</code></pre>
+          </div>
+          <div class="install-step">
+            <header>
+              <h3>Step 3 — Restart Claude Code</h3>
+            </header>
+            <p class="install-step-note">
+              Restart Claude Code so the new agents, hooks, and skills load.
+            </p>
+          </div>
+          <div class="install-step">
+            <header>
+              <h3>Step 4 — Initialize</h3>
+              <button type="button" class="copy-btn" data-copy="install-init">
+                Copy
+              </button>
+            </header>
+            <pre id="install-init"><code>/system2:init</code></pre>
+          </div>
+          <div class="install-step">
+            <header>
+              <h3>Step 5 — Restart Claude Code</h3>
+            </header>
+            <p class="install-step-note">
+              Restart again so the new <code>CLAUDE.md</code> orchestrator
+              instructions take effect.
+            </p>
+          </div>
+        </div>
+
+        <p class="install-note">
+          Step 2 installs all 13 agents, hooks, allowlists, and the
+          <code>/system2:init</code>, <code>/system2:compose</code>, and
+          <code>/system2:doctor</code> skills. Run
+          <code>/system2:init</code> in your project root to write orchestrator
+          instructions to <code>CLAUDE.md</code>; use
+          <code>/system2:init --force</code> to replace an existing file.
+          Check plugin status with <code>/plugin list</code>. After plugin
+          updates, run <code>/system2:doctor</code> and recompose overlays with
+          <code>/system2:compose --from-lock</code> if needed.
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <span class="footer-brand">Deliberate Code</span>
+        <ul class="footer-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/overlays/">Overlays</a></li>
+          <li>
+            <a
+              class="external"
+              href="https://github.com/DeliberateCode/System2"
+              target="_blank"
+              rel="noopener noreferrer"
+              >System2 on GitHub</a
+            >
+          </li>
+        </ul>
+        <p class="footer-meta">System2 is open source under the MIT license.</p>
+      </div>
+    </footer>
+  </body>
+</html>

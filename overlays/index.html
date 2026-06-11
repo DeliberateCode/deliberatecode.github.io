@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Overlays — Deliberate Code</title>
+    <meta
+      name="description"
+      content="System2 overlay library: extensions that inject domain guidance into the multi-agent pipeline."
+    />
+    <meta property="og:title" content="Overlays — Deliberate Code" />
+    <meta
+      property="og:description"
+      content="System2 overlay library: extensions that inject domain guidance into the multi-agent pipeline."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://deliberatecode.github.io/overlays/"
+    />
+    <meta
+      property="og:image"
+      content="https://deliberatecode.github.io/assets/apple-touch-icon.png"
+    />
+    <link rel="icon" href="../assets/favicon-96.png" type="image/png" />
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/site.css" />
+    <script src="../js/site.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="/">
+          <img
+            class="brand-mark"
+            src="../assets/favicon-96.png"
+            width="36"
+            height="36"
+            alt=""
+          />
+          <span class="brand-text">Deliberate Code</span>
+        </a>
+        <nav class="site-nav" data-site-nav aria-label="Site"></nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-hero wrap">
+        <p class="hero-eyebrow">System2 extensions</p>
+        <h1>Overlays</h1>
+        <p class="hero-lede section-intro--full">
+          Overlays extend <a href="/system2/">System2</a> without forking the
+          core plugin. Each overlay contributes guidance at declared points in
+          the orchestrator and agent pipeline; apply with
+          <code>/system2:compose</code> after previewing with
+          <code>--dry-run</code>.
+        </p>
+      </section>
+
+      <section class="section wrap overlay-grid-section">
+        <div class="overlay-grid">
+          <article class="overlay-card overlay-card--domainarch">
+            <a
+              class="overlay-card-link external"
+              href="https://github.com/DeliberateCode/System2-DomainArch"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="overlay-card-accent" aria-hidden="true"></span>
+              <span class="overlay-card-badge">overlay</span>
+              <h2 class="overlay-card-title">System2-DomainArch</h2>
+              <p class="overlay-card-desc">
+                Domain-driven architecture across the pipeline—DDD boundaries,
+                Pike’s simplicity rules, and Reactive properties—from context
+                through code review.
+              </p>
+              <div class="tag-row overlay-card-tags">
+                <span class="tag">Architecture</span>
+                <span class="tag">DDD</span>
+                <span class="tag">Distributed systems</span>
+              </div>
+              <span class="overlay-card-cta">View on GitHub</span>
+            </a>
+          </article>
+
+          <article class="overlay-card overlay-card--viewer">
+            <a
+              class="overlay-card-link external"
+              href="https://github.com/DeliberateCode/System2-Viewer"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="overlay-card-accent" aria-hidden="true"></span>
+              <span class="overlay-card-badge">overlay</span>
+              <h2 class="overlay-card-title">System2-Viewer</h2>
+              <p class="overlay-card-desc">
+                Evidence-backed codebase model—structure, symbols, blast radius,
+                and uncertainties—via MCP and CLI. Advisory, read-only;
+                hooks Gate&nbsp;1 and Gate&nbsp;3.
+              </p>
+              <div class="tag-row overlay-card-tags">
+                <span class="tag">MCP</span>
+                <span class="tag">Code intelligence</span>
+                <span class="tag">Advisory</span>
+              </div>
+              <span class="overlay-card-cta">View on GitHub</span>
+            </a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <span class="footer-brand">Deliberate Code</span>
+        <ul class="footer-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/system2/">System2</a></li>
+          <li><a href="/overlays/">Overlays</a></li>
+          <li>
+            <a
+              class="external"
+              href="https://github.com/DeliberateCode"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub</a
+            >
+          </li>
+        </ul>
+        <p class="footer-meta">
+          Install and compose steps live in each overlay’s README.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

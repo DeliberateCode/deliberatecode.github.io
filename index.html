@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Deliberate Code</title>
+    <meta
+      name="description"
+      content="Open tools for deliberate, spec-driven software engineering with AI agents."
+    />
+    <meta property="og:title" content="Deliberate Code" />
+    <meta
+      property="og:description"
+      content="Open tools for deliberate, spec-driven software engineering with AI agents."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://deliberatecode.github.io/" />
+    <meta property="og:image" content="https://deliberatecode.github.io/assets/apple-touch-icon.png" />
+    <link rel="icon" href="assets/favicon-96.png" type="image/png" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/site.css" />
+    <script src="js/site.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="/">
+          <img
+            class="brand-mark"
+            src="assets/favicon-96.png"
+            width="36"
+            height="36"
+            alt=""
+          />
+          <span class="brand-text">Deliberate Code</span>
+        </a>
+        <nav class="site-nav" data-site-nav aria-label="Site"></nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero wrap">
+        <div class="hero-inner">
+          <div>
+            <h1>Slow thinking, shipped software.</h1>
+            <p class="hero-lede">
+              Deliberate Code builds frameworks for spec-driven, verification-first
+              work with AI agents—where planning artifacts are the contract and
+              quality gates keep execution honest.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="system2/">Explore System2</a>
+              <a
+                class="btn btn-secondary external"
+                href="https://github.com/DeliberateCode"
+                target="_blank"
+                rel="noopener noreferrer"
+                >View organization</a
+              >
+            </div>
+          </div>
+          <aside class="hero-aside" aria-label="System2 workflow summary">
+            <h2>System2 pipeline</h2>
+            <ul class="pipeline-mini">
+              <li>Scope</li>
+              <li>Context</li>
+              <li>Requirements</li>
+              <li>Design</li>
+              <li>Tasks</li>
+              <li>Build</li>
+              <li>Verify</li>
+              <li>Ship</li>
+            </ul>
+            <p>
+              Named after Kahneman’s System&nbsp;2: analytical, deliberate, and
+              risk-aware—not fast intuition alone.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section wrap" id="philosophy">
+        <p class="section-label">Philosophy</p>
+        <h2 class="section-title">Intuition is fast. Engineering should be slow.</h2>
+        <p class="section-intro section-intro--full">
+          Agent-assisted coding defaults to System&nbsp;1 thinking: quick guesses,
+          implicit requirements, and “looks done” diffs. Deliberate Code tools
+          encode System&nbsp;2 habits—explicit scope, written specs, and checkpoints
+          before merge.
+        </p>
+        <div class="dual-grid">
+          <article class="dual-card dual-card--fast">
+            <h3>System 1</h3>
+            <p>
+              Fast, automatic, pattern-matching. Great for exploration; risky as
+              the only mode for production changes.
+            </p>
+          </article>
+          <article class="dual-card dual-card--slow">
+            <h3>System 2</h3>
+            <p>
+              Slow, effortful, analytical. The mode our tools reinforce—through
+              specs, gates, and verification built into the workflow.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section wrap">
+        <p class="section-label">How we build</p>
+        <h2 class="section-title">Principles behind every project</h2>
+        <div class="principles-grid">
+          <article class="principle">
+            <span class="principle-num">01</span>
+            <h3>Spec-driven</h3>
+            <p>
+              Planning produces versioned Markdown in <code>spec/</code>—context,
+              requirements, design, and tasks—before implementation begins.
+            </p>
+          </article>
+          <article class="principle">
+            <span class="principle-num">02</span>
+            <h3>Gate-checked</h3>
+            <p>
+              Work advances only after explicit approval at scope, context,
+              requirements, design, tasks, and ship.
+            </p>
+          </article>
+          <article class="principle">
+            <span class="principle-num">03</span>
+            <h3>Verification-first</h3>
+            <p>
+              Tests, security review, and evals are first-class stages—not
+              optional cleanup after the model stops talking.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section wrap">
+        <p class="section-label">Projects</p>
+        <h2 class="section-title">From the organization</h2>
+        <article class="product-featured">
+          <div>
+            <span class="product-badge">Claude Code plugin</span>
+            <h3>System2</h3>
+            <p>
+              A multi-agent engineering workflow for Claude Code: thirteen
+              specialized subagents, safety hooks, allowlists, and a structured
+              path from scope to ship.
+            </p>
+            <div class="tag-row">
+              <span class="tag">13 agents</span>
+              <span class="tag">Quality gates</span>
+              <span class="tag">Hooks &amp; allowlists</span>
+              <span class="tag">MIT license</span>
+            </div>
+            <div class="product-actions">
+              <a class="btn btn-primary" href="system2/">Documentation</a>
+              <a
+                class="btn btn-secondary external"
+                href="https://github.com/DeliberateCode/System2"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Source</a
+              >
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <span class="footer-brand">Deliberate Code</span>
+        <ul class="footer-links">
+          <li><a href="/system2/">System2</a></li>
+          <li><a href="/overlays/">Overlays</a></li>
+          <li>
+            <a
+              class="external"
+              href="https://github.com/DeliberateCode"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub</a
+            >
+          </li>
+        </ul>
+        <p class="footer-meta">
+          Open source tools for deliberate software engineering.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
