@@ -1176,3 +1176,144 @@ a:focus-visible {
   font-size: 0.8em;
   opacity: 0.5;
 }
+
+/* ── Long-form essay / Philosophy page ───────────────────────────── */
+.essay {
+  max-width: 44rem;
+  margin: 0 auto;
+}
+
+.essay > p,
+.essay > ul,
+.essay > ol {
+  color: var(--fg);
+}
+
+.essay p {
+  margin: 0 0 1.4rem;
+  font-size: 1.125rem;
+  line-height: 1.72;
+}
+
+.essay-lede {
+  font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+  line-height: 1.55;
+  color: var(--muted);
+  margin-bottom: 2.25rem;
+}
+
+.essay h2 {
+  margin: 3.25rem 0 1.1rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 1.95rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.essay h3 {
+  margin: 2rem 0 0.75rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.essay strong {
+  font-weight: 600;
+}
+
+.essay blockquote {
+  margin: 2.25rem 0;
+  padding: 1.1rem 1.6rem;
+  border-left: 3px solid var(--accent);
+  background: var(--system2-bg);
+  border-radius: 0 10px 10px 0;
+  font-size: clamp(1.2rem, 2.4vw, 1.4rem);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+
+.essay ul,
+.essay ol {
+  margin: 0 0 1.4rem;
+  padding-left: 1.4rem;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+.essay li {
+  margin: 0 0 0.65rem;
+}
+
+.essay a {
+  color: var(--accent);
+}
+
+/* Footnotes */
+.fn-ref {
+  font-size: 0.7em;
+  font-weight: 600;
+  line-height: 0;
+  vertical-align: super;
+}
+
+.fn-ref a {
+  text-decoration: none;
+  padding: 0 0.05em;
+}
+
+.footnotes {
+  margin: 4rem auto 0;
+  max-width: 44rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.footnotes h2 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 1.25rem;
+}
+
+.footnotes ol {
+  margin: 0;
+  padding-left: 1.4rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.footnotes li {
+  margin: 0 0 0.85rem;
+  padding-left: 0.25rem;
+}
+
+.footnotes li:target {
+  background: var(--accent-soft);
+  border-radius: 6px;
+  box-shadow: 0 0 0 0.4rem var(--accent-soft);
+}
+
+.footnotes a {
+  color: var(--accent);
+}
+
+/* Subtle live links on cited works — quiet until hover */
+.footnotes a.cite-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.footnotes a.cite-link:hover,
+.footnotes a.cite-link:focus-visible {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
