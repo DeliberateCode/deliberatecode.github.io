@@ -20,6 +20,7 @@
       { href: "/", label: "Home" },
       { href: "/system2/", label: "System2" },
       { href: "/overlays/", label: "Overlays" },
+      { href: "/philosophy/", label: "Philosophy" },
     ];
 
     var ul = document.createElement("ul");

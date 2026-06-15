@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fast Models, Slow Engineering — Deliberate Code</title>
+    <meta
+      name="description"
+      content="Why we named it System2: a modern LLM is a magnificent System 1, and you cannot prompt it into being a System 2. You have to build the second system around it."
+    />
+    <meta
+      property="og:title"
+      content="Fast Models, Slow Engineering — Deliberate Code"
+    />
+    <meta
+      property="og:description"
+      content="A modern LLM is a magnificent System 1, and you cannot prompt it into being a System 2. You have to build the second system around it."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://deliberatecode.github.io/philosophy/"
+    />
+    <meta property="og:image" content="https://deliberatecode.github.io/assets/apple-touch-icon.png" />
+    <link rel="icon" href="../assets/favicon-96.png" type="image/png" />
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/site.css" />
+    <script src="../js/site.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="/">
+          <img
+            class="brand-mark"
+            src="../assets/favicon-96.png"
+            width="36"
+            height="36"
+            alt=""
+          />
+          <span class="brand-text">Deliberate Code</span>
+        </a>
+        <nav class="site-nav" data-site-nav aria-label="Site"></nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-hero wrap">
+        <p class="hero-eyebrow">Philosophy</p>
+        <h1>Fast models, slow engineering.</h1>
+        <p class="hero-lede">
+          The name “System2” is borrowed from Daniel Kahneman, and most
+          descriptions stop at the borrowing. But the name is not a mood. It is a
+          specific, falsifiable claim about what today’s coding agents are, what
+          they get wrong, and what it takes to fix them.
+        </p>
+      </section>
+
+      <article class="section wrap">
+        <div class="essay">
+          <h2>Planning is the work of the intellect</h2>
+          <p>
+            Reason at its most ambitious is patient. The pursuits we most
+            admire—mathematics and medicine, architecture and law, the long
+            accretion of scientific discovery—are triumphs of the deliberate mind:
+            of foresight, of revision, of holding a goal steady across months and
+            years. In Kahneman’s dual-process account, this is System&nbsp;2 at
+            work—the slow track: deliberate, sequential, reflective, the part of us
+            that drafts and redrafts, saves for next winter, sleeps on a hard
+            decision, and checks the sum a second time.<span class="fn-ref" id="fnref-1"><a href="#fn-1">1</a></span>
+            Its partner, System&nbsp;1, is the fast track: automatic, associative,
+            effortless, always on—how we catch a falling glass, read a face, and
+            finish the phrase “bread and&nbsp;…”. We lean on both every ordinary day
+            we plan past this afternoon.
+          </p>
+          <p>
+            If System&nbsp;1 is something like the Id—quick, instinctive, hungry
+            for the answer <em>now</em>—then System&nbsp;2 is the rational ego that
+            gives those impulses a plan and a horizon. The two are partners, not
+            rivals: intuition proposes, deliberation composes. We named the
+            framework <strong>System2</strong> after the faculty we most want to
+            lend to building with AI—not to slow the fast mind down, but to give it
+            the long view it does its best work inside.
+          </p>
+
+          <h2>What System 1 actually is</h2>
+          <p>
+            System&nbsp;1 is not stupid. It is <em>usually right</em>, which is
+            precisely what makes it dangerous. Its errors are not random noise;
+            they are systematic, and they have names.<span class="fn-ref" id="fnref-2"><a href="#fn-2">2</a></span>
+          </p>
+          <ul>
+            <li>
+              <strong>WYSIATI—“what you see is all there is.”</strong> System&nbsp;1
+              builds the most coherent story it can from the information in front
+              of it, and is blind to what is missing. Confidence flows from the
+              coherence of the story, not from the quality of the evidence.<span class="fn-ref" id="fnref-3"><a href="#fn-3">3</a></span>
+            </li>
+            <li>
+              <strong>Attribute substitution.</strong> Faced with a hard question
+              (“is this architecture correct?”), System&nbsp;1 quietly answers an
+              easier one (“does this <em>look like</em> correct architecture?”)
+              and reports the answer to the question it was actually asked.<span class="fn-ref" id="fnref-4"><a href="#fn-4">4</a></span>
+            </li>
+            <li>
+              <strong>Cognitive ease mistaken for truth.</strong> Information that
+              is fluent, familiar, and easy to process simply <em>feels</em> true.
+              Fluency is read as validity.<span class="fn-ref" id="fnref-1b"><a href="#fn-1">1</a></span>
+            </li>
+            <li>
+              <strong>The lazy controller.</strong> Because checking is effortful,
+              System&nbsp;2 mostly defers—rubber-stamping System&nbsp;1 rather than
+              auditing it.<span class="fn-ref" id="fnref-1c"><a href="#fn-1">1</a></span>
+            </li>
+          </ul>
+
+          <h2>A modern LLM is a magnificent System 1</h2>
+          <p>
+            A language model is, in architecture, a fast associative
+            pattern-matcher trained to produce the most plausible continuation of
+            its context. That is a near-perfect mechanical analogue of
+            System&nbsp;1—and it inherits System&nbsp;1’s failure modes almost line
+            for line.
+          </p>
+          <ul>
+            <li>
+              <strong>WYSIATI</strong> becomes acting on the prompt and the
+              visible context as if they were the whole problem—confidently
+              filling gaps with whatever makes the story cohere, and never raising
+              the requirement that was simply never stated.
+            </li>
+            <li>
+              <strong>Substitution</strong> becomes producing code that
+              <em>looks like</em> a solution in place of code that <em>is</em> one:
+              the “looks done” diff, the test that asserts the function ran rather
+              than that it is correct.
+            </li>
+            <li>
+              <strong>Cognitive ease as truth</strong> is the central hazard. A
+              language model is a fluency engine; fluency is the one property it is
+              guaranteed to deliver. It will explain a wrong answer as smoothly and
+              as confidently as a right one—and the prose reads as correct for
+              exactly the reason Kahneman warns about.
+            </li>
+            <li>
+              <strong>The lazy controller</strong> becomes the harness default.
+              One-shot generation is cheap; deliberation costs tokens, latency, and
+              turns. So the path of least resistance—for the model and for the
+              product built around it—is fast, confident, unchecked output.
+            </li>
+          </ul>
+          <p>
+            This is the part the soundbite misses. The trouble with
+            agent-assisted coding is not that the model is dim. It is that the
+            model is a brilliant intuition with no native faculty for doubting
+            itself—and we keep wrapping it in harnesses that reward the intuition
+            and skip the doubt.
+          </p>
+
+          <h2>The economics of immediate gratification</h2>
+          <p>
+            Why do harnesses skip the doubt? Because every incentive points at the
+            present moment. A fast answer gratifies <em>now</em>: the demo runs,
+            the test goes green, the diff appears. Verification, planning, and
+            written specifications pay off <em>later</em>—in the bug that never
+            ships, the rewrite that never happens, the page that never fires. This
+            is intertemporal choice, and the fast system discounts the future
+            steeply in favour of the reward in hand.<span class="fn-ref" id="fnref-5"><a href="#fn-5">5</a></span>
+          </p>
+          <p>
+            Default LLM harnesses optimise for the immediate reward: the next
+            token, the next passing check, the change that looks done this turn. It
+            is the marshmallow test, run on machines—and most harnesses eat the
+            marshmallow.<span class="fn-ref" id="fnref-6"><a href="#fn-6">6</a></span>
+            The cost is deferred, not avoided. It returns as the integration that
+            does not hold, the security hole nobody modelled, the “working” feature
+            that encodes a requirement no one actually agreed to. System&nbsp;2 work
+            is the opposite trade: slower and dearer up front, buying down risk you
+            would otherwise pay for downstream at a worse exchange rate.
+          </p>
+
+          <h2>You cannot prompt a System 1 into being a System 2</h2>
+          <p>
+            Here is the move that separates System2 from “just ask the model to
+            think step by step.”
+          </p>
+          <p>
+            In a human, System&nbsp;2 is a faculty inside the same head—limited and
+            lazy, but present. A language model has no such second system to
+            mobilise. Instructing it to “be careful,” “think hard,” or
+            “double-check” recruits more of the same fast, fluent
+            pattern-matching; it produces text <em>about</em> deliberation, which
+            is itself a System&nbsp;1 product and just as prone to confident
+            coherence. The reasoning a model narrates need not be the computation
+            that produced its answer.<span class="fn-ref" id="fnref-7"><a href="#fn-7">7</a></span>
+            And asking the same model to grade its own work is the lazy controller
+            endorsing System&nbsp;1—models will sooner agree with you, or with
+            themselves, than mount a genuine challenge.<span class="fn-ref" id="fnref-8"><a href="#fn-8">8</a></span>
+          </p>
+          <p>
+            So deliberation has to be <strong>externalised</strong>—built as a
+            process <em>around</em> the model, the way humans extend their own
+            limited System&nbsp;2 with tools that live outside the head: writing
+            things down, doing the arithmetic on paper, working a checklist, asking
+            a colleague to review. Kahneman’s own remedies for bias are all
+            external scaffolding—the pre-mortem, reference-class
+            forecasting, structured decision hygiene—precisely because you cannot
+            will System&nbsp;1 into rigour from the inside.<span class="fn-ref" id="fnref-9"><a href="#fn-9">9</a></span>
+          </p>
+          <blockquote>
+            You can’t prompt a fast mind into a slow one. The second system has to
+            be built <em>around</em> it, in specs, gates, and review. Not asked for.
+          </blockquote>
+
+          <h2>How System2 externalises the second system</h2>
+          <p>
+            Each mechanism in the pipeline maps to a specific antidote for a
+            specific System&nbsp;1 failure.
+          </p>
+          <h3>Specs before code</h3>
+          <p>
+            Scope → Context → Requirements → Design → Tasks. Forcing articulation
+            <em>before</em> generation is a debiasing technique. A written,
+            versioned specification is the cure for WYSIATI and substitution: the
+            implicit requirement must be made explicit before there is any fluent
+            diff to be seduced by. Requirements stated as testable contracts are a
+            near-literal pre-mortem—naming what the work must satisfy before the
+            work exists to flatter you.<span class="fn-ref" id="fnref-9b"><a href="#fn-9">9</a></span>
+          </p>
+          <h3>Quality gates</h3>
+          <p>
+            Gates are deliberately introduced friction. System&nbsp;1 wants to flow
+            from idea to “done”; a gate interrupts the flow and forces a slow check
+            at the point where a fast mistake is cheapest to catch. This is
+            decision hygiene: a stop, on purpose, before an irreversible step.
+          </p>
+          <h3>Generation separated from verification</h3>
+          <p>
+            A distinct code reviewer, security sentinel, and test engineer are
+            external monitors—System&nbsp;2’s actual job, watching System&nbsp;1,
+            handed to a different agent with a different mandate and fresh context,
+            so the verifier is not the same intuition that wrote the code grading
+            its own homework.
+          </p>
+          <h3>Subagents with fresh context</h3>
+          <p>
+            Division of cognitive labour, and a defence against anchoring: a
+            reviewer that did not live through the generation is not primed by it,
+            and is freer to disagree.<span class="fn-ref" id="fnref-2b"><a href="#fn-2">2</a></span>
+          </p>
+          <p>
+            None of this makes the underlying model less of a System&nbsp;1. It
+            surrounds the System&nbsp;1 with the structure a deliberate engineer
+            would impose on themselves—and makes that structure the contract rather
+            than a suggestion.
+          </p>
+
+          <h2>The honest tension</h2>
+          <p>
+            A narrative that only praised slow thinking would be committing
+            System&nbsp;1’s mistake in the other direction. Kahneman is emphatic
+            that System&nbsp;1 is indispensable and usually correct; a mind that ran
+            everything through System&nbsp;2 would seize up, and so would an
+            engineering process. Deliberation has real costs—latency, tokens,
+            ceremony, the risk of turning judgment into bureaucracy. Friction
+            applied indiscriminately does not produce rigour; it produces theatre
+            that people learn to click through.
+          </p>
+          <p>
+            The goal, then, is not <em>maximum</em> deliberation. It is
+            <strong>calibrated</strong> deliberation: effort proportional to the
+            stakes and, above all, to <em>irreversibility</em>. Spend System&nbsp;2
+            where a mistake is expensive or hard to undo—architecture, security
+            boundaries, public interfaces, data migrations—and let fast intuition
+            run where it is cheap and easily corrected: exploration, scaffolding,
+            throwaway spikes. System&nbsp;1 is great for exploration and risky as
+            the only mode for production changes. Gates should be sized to the blast
+            radius, not stamped uniformly on everything. A good harness makes the
+            slow path available, and the default where it matters—not mandatory
+            everywhere.
+          </p>
+
+          <h2>The payoff</h2>
+          <p>
+            “Slow thinking, shipped software” is not a taste for slowness. It is a
+            claim: that the fast, fluent, immediately gratifying output of a
+            System&nbsp;1 machine is exactly the thing that <em>feels</em> most
+            finished and is most likely to be wrong in the ways that hurt later—and
+            that the remedy is not a cleverer intuition but an external second
+            system: written intent, deliberate checkpoints, and independent
+            verification, applied where the stakes justify the cost.
+          </p>
+          <p>
+            That is what System2 is. Not a slower way to code. A deliberate one.
+          </p>
+
+          <p class="essay-lede" style="margin-top: 2.5rem; margin-bottom: 0">
+            The thesis, in one line: a modern large language model is a
+            magnificent <strong>System&nbsp;1</strong>—and no amount of prompting
+            turns a System&nbsp;1 into a <strong>System&nbsp;2</strong>. You have
+            to build the second system around it.
+          </p>
+
+          <div class="hero-actions" style="margin-top: 2.5rem">
+            <a class="btn btn-primary" href="/system2/">Explore System2</a>
+            <a class="btn btn-secondary" href="/overlays/">See the overlays</a>
+          </div>
+        </div>
+
+        <section class="footnotes" aria-label="References and notes">
+          <h2>Notes &amp; references</h2>
+          <ol>
+            <li id="fn-1">
+              Daniel Kahneman,
+              <a class="cite-link" href="https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow"><em>Thinking, Fast and Slow</em></a>
+              (New York: Farrar,
+              Straus and Giroux, 2011). The dual-process framing, the “always on”
+              character of System&nbsp;1, the lazy System&nbsp;2 that endorses
+              rather than audits, and cognitive ease as a source of felt truth are
+              developed throughout, esp. Parts&nbsp;I–II.
+              <a href="#fnref-1" aria-label="Back to text">↩</a>
+            </li>
+            <li id="fn-2">
+              Amos Tversky and Daniel Kahneman,
+              <a class="cite-link" href="https://doi.org/10.1126/science.185.4157.1124">“Judgment under Uncertainty:
+              Heuristics and Biases”</a>, <em>Science</em> 185, no.&nbsp;4157 (1974):
+              1124–1131—the foundational account of anchoring, availability, and
+              representativeness as systematic (not random) error.
+              <a href="#fnref-2" aria-label="Back to text">↩</a>
+            </li>
+            <li id="fn-3">
+              On WYSIATI—“what you see is all there is”—and confidence as a
+              function of story coherence rather than evidence quality, see Kahneman,
+              <a class="cite-link" href="https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow"><em>Thinking, Fast and Slow</em></a>, ch.&nbsp;7.
+              <a href="#fnref-3" aria-label="Back to text">↩</a>
+            </li>
+            <li id="fn-4">
+              Daniel Kahneman and Shane Frederick,
+              <a class="cite-link" href="https://www.cambridge.org/core/books/abs/heuristics-and-biases/representativeness-revisited-attribute-substitution-in-intuitive-judgment/AAB5D933A3F944CFB5CB02265D376C8F">“Representativeness Revisited:
+              Attribute Substitution in Intuitive Judgment”</a>, in <em>Heuristics and
+              Biases: The Psychology of Intuitive Judgment</em>, ed. Gilovich,
+              Griffin, and Kahneman (Cambridge: Cambridge University Press, 2002),
+              49–81.
+              <a href="#fnref-4" aria-label="Back to text">↩</a>
+            </li>
+            <li id="fn-5">
+              On present bias and steep (hyperbolic) discounting of future payoffs,
+              see Shane Frederick, George Loewenstein, and Ted O’Donoghue,
+              <a class="cite-link" href="https://doi.org/10.1257/002205102320161311">“Time
+              Discounting and Time Preference: A Critical Review”</a>, <em>Journal of
+              Economic Literature</em> 40, no.&nbsp;2 (2002): 351–401.
+              <a href="#fnref-5" aria-label="Back to text">↩</a>
+            </li>
+            <li id="fn-6">
+              The “marshmallow test” of delayed gratification: Walter Mischel,
+              Yuichi Shoda, and Monica L. Rodriguez,
+              <a class="cite-link" href="https://doi.org/10.1126/science.2658056">“Delay of Gratification in
+              Children”</a>, <em>Science</em> 244, no.&nbsp;4907 (1989): 933–938.
+              <a href="#fnref-6" aria-label="Back to text">↩</a>
+            </li>
+            <li id="fn-7">
+              That a model’s narrated reasoning need not reflect the computation
+              behind its answer: Miles Turpin, Julian Michael, Ethan Perez, and
+              Samuel R. Bowman,
+              <a class="cite-link" href="https://arxiv.org/abs/2305.04388">“Language Models Don’t Always Say What They Think:
+              Unfaithful Explanations in Chain-of-Thought Prompting”</a>, NeurIPS 2023
+              (arXiv:2305.04388). For chain-of-thought prompting itself, see Jason
+              Wei et al.,
+              <a class="cite-link" href="https://arxiv.org/abs/2201.11903">“Chain-of-Thought Prompting Elicits Reasoning in Large
+              Language Models”</a>, NeurIPS 2022 (arXiv:2201.11903).
+              <a href="#fnref-7" aria-label="Back to text">↩</a>
+            </li>
+            <li id="fn-8">
+              On models’ tendency to tell users (and themselves) what they want to
+              hear rather than challenge it: Mrinank Sharma et al.,
+              <a class="cite-link" href="https://arxiv.org/abs/2310.13548">“Towards
+              Understanding Sycophancy in Language Models”</a>, 2023
+              (arXiv:2310.13548).
+              <a href="#fnref-8" aria-label="Back to text">↩</a>
+            </li>
+            <li id="fn-9">
+              External debiasing scaffolds: the pre-mortem—Gary Klein,
+              <a class="cite-link" href="https://hbr.org/2007/09/performing-a-project-premortem">“Performing
+              a Project Premortem”</a>, <em>Harvard Business Review</em> (September
+              2007); and reference-class forecasting—Bent Flyvbjerg,
+              <a class="cite-link" href="https://arxiv.org/abs/1302.3642">“From Nobel
+              Prize to Project Management: Getting Risks Right”</a>, <em>Project
+              Management Journal</em> 37, no.&nbsp;3 (2006): 5–15. Kahneman
+              endorses both in <em>Thinking, Fast and Slow</em>, Part&nbsp;III.
+              <a href="#fnref-9" aria-label="Back to text">↩</a>
+            </li>
+          </ol>
+        </section>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <span class="footer-brand">Deliberate Code</span>
+        <ul class="footer-links">
+          <li><a href="/system2/">System2</a></li>
+          <li><a href="/overlays/">Overlays</a></li>
+          <li><a href="/philosophy/">Philosophy</a></li>
+          <li>
+            <a
+              class="external"
+              href="https://github.com/DeliberateCode"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub</a
+            >
+          </li>
+        </ul>
+        <p class="footer-meta">
+          Open source tools for deliberate software engineering.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
