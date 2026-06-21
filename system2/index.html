@@ -154,7 +154,8 @@
             <p>
               Extend System2 with overlays that inject guidance into the agent
               pipeline without forking the core plugin. Browse the
-              <a href="/overlays/">overlay library</a>.
+              <a href="/overlays/">overlay library</a>, then save combinations as
+              <a href="/overlays/#profiles">reusable profiles</a>.
             </p>
           </article>
         </div>
@@ -275,6 +276,11 @@ spec/
               </button>
             </header>
             <pre id="install-marketplace"><code>/plugin marketplace add DeliberateCode/System2</code></pre>
+            <p class="install-step-note">
+              This only <strong>registers</strong> the System2 catalog—you’ll
+              see a confirmation that the marketplace was added. It does
+              <strong>not</strong> install the plugin yet; that’s Step&nbsp;2.
+            </p>
           </div>
           <div class="install-step">
             <header>
@@ -283,6 +289,10 @@ spec/
                 Copy
               </button>
             </header>
+            <p class="install-step-note">
+              Now install the <code>system2</code> plugin from the catalog you
+              just added.
+            </p>
             <pre id="install-plugin"><code>/plugin install system2@system2-marketplace</code></pre>
           </div>
           <div class="install-step">

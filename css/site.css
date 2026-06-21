@@ -1125,6 +1125,24 @@ a:focus-visible {
   background: linear-gradient(90deg, var(--accent), var(--brand-navy));
 }
 
+.overlay-card--dataarch .overlay-card-accent {
+  background: linear-gradient(
+    90deg,
+    var(--brand-navy),
+    var(--accent) 60%,
+    var(--accent-hover)
+  );
+}
+
+.overlay-card--formalconstruct .overlay-card-accent {
+  background: linear-gradient(
+    90deg,
+    var(--accent-hover),
+    var(--accent) 50%,
+    var(--brand-navy)
+  );
+}
+
 .overlay-card-badge {
   display: inline-block;
   margin-bottom: 0.85rem;
