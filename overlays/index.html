@@ -67,6 +67,30 @@
 
       <section class="section wrap overlay-grid-section">
         <div class="overlay-grid">
+          <article class="overlay-card overlay-card--dataarch">
+            <a
+              class="overlay-card-link external"
+              href="https://github.com/DeliberateCode/System2-DataArch"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="overlay-card-accent" aria-hidden="true"></span>
+              <span class="overlay-card-badge">overlay · in design</span>
+              <h2 class="overlay-card-title">System2-DataArch</h2>
+              <p class="overlay-card-desc">
+                Data pipeline engineering with Apache Airflow—ELT/ETL jobs as
+                DAGs, plus versioned labeled-data delivery for ML
+                experimentation, validation, and evaluation.
+              </p>
+              <div class="tag-row overlay-card-tags">
+                <span class="tag">Data engineering</span>
+                <span class="tag">Airflow</span>
+                <span class="tag">ML data</span>
+              </div>
+              <span class="overlay-card-cta">View on GitHub</span>
+            </a>
+          </article>
+
           <article class="overlay-card overlay-card--domainarch">
             <a
               class="overlay-card-link external"
@@ -86,6 +110,30 @@
                 <span class="tag">Architecture</span>
                 <span class="tag">DDD</span>
                 <span class="tag">Distributed systems</span>
+              </div>
+              <span class="overlay-card-cta">View on GitHub</span>
+            </a>
+          </article>
+
+          <article class="overlay-card overlay-card--formalconstruct">
+            <a
+              class="overlay-card-link external"
+              href="https://github.com/DeliberateCode/System2-FormalConstruct"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="overlay-card-accent" aria-hidden="true"></span>
+              <span class="overlay-card-badge">overlay</span>
+              <h2 class="overlay-card-title">System2-FormalConstruct</h2>
+              <p class="overlay-card-desc">
+                Translates mathematical narratives into verified Lean&nbsp;4
+                proofs. Ships standalone or as an overlay; backed by the AXLE
+                MCP server for Lean compilation and verification.
+              </p>
+              <div class="tag-row overlay-card-tags">
+                <span class="tag">Lean 4</span>
+                <span class="tag">Formal proofs</span>
+                <span class="tag">MCP</span>
               </div>
               <span class="overlay-card-cta">View on GitHub</span>
             </a>
@@ -115,6 +163,45 @@
             </a>
           </article>
         </div>
+      </section>
+
+      <section class="section wrap" id="profiles">
+        <p class="section-label">Reusable composition</p>
+        <h2 class="section-title">Overlay profiles</h2>
+        <p class="section-intro">
+          A profile is a named, reusable set of overlays. Settle on a useful
+          combination once, then activate it by name in any project instead of
+          retyping overlay paths. Profiles live at
+          <code>~/.system2/profiles.json</code>—user-level, shared across every
+          project on your machine, and independent of each project’s
+          <code>.system2/overlays.json</code>.
+        </p>
+
+        <div class="spec-panel" aria-label="Overlay profile commands">
+          <pre><span class="comment"># Activate a profile in the current project (dry-run preview first)</span>
+/system2:compose --profile backend-stack
+
+<span class="comment"># Save the project's current overlay set as a profile</span>
+/system2:compose --save-profile backend-stack
+
+<span class="comment"># Define a profile explicitly from overlay paths</span>
+/system2:compose create backend-stack /path/to/overlay-a /path/to/overlay-b
+
+<span class="comment"># Adjust a profile (flags are repeatable)</span>
+/system2:compose edit backend-stack --add /path/to/overlay-c --remove OverlayA
+
+<span class="comment"># Inspect, read-only — list profiles or show one profile's set</span>
+/system2:profile list
+/system2:profile list --profile backend-stack</pre>
+        </div>
+
+        <p class="install-note">
+          The <code>/system2:compose</code> namespace creates, activates, and
+          changes profiles; <code>/system2:profile</code> is strictly read-only.
+          Activation is all-or-nothing—if a profile references an overlay path
+          that is missing or no longer valid, it fails cleanly, names the
+          offending path, and writes nothing.
+        </p>
       </section>
     </main>
 
